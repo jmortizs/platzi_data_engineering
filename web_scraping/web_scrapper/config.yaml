@@ -1,0 +1,10 @@
+news_sites:
+  vanguardia:
+    url: https://www.vanguardia.com
+    queries:
+      homepage_article_links: '.article.element.no-access.restricted a'
+  elespectador:
+    url: https://www.elespectador.com
+    queries:
+      homepage_article_links: '.Card-Title a'
+
