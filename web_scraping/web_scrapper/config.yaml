@@ -2,13 +2,13 @@ news_sites:
   vanguardia:
     url: https://www.vanguardia.com
     queries:
-      homepage_article_links: '.article.element.no-access.restricted a'
-      article_summary: 'headline.font-1.bold.mainheadlineart'
-      article_title: 'subheadline.font-1.bold.lead'
+      homepage_article_links: '.block-right a'
+      article_title: '.headline.font-1.bold.mainheadlineart span'
+      article_summary: '.subheadline.font-1.bold.lead'
   elespectador:
     url: https://www.elespectador.com
     queries:
       homepage_article_links: '.Card-Title a'
-      article_summary: '.Hook.ArticleHeader-Hook.Hook_main div'
       article_title: '.Title.ArticleHeader-Title.Title_article'
+      article_summary: '.Hook.ArticleHeader-Hook.Hook_main div'
 

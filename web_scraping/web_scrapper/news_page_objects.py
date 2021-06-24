@@ -49,11 +49,11 @@ class ArticlePage(NewsPage):
     def title(self):
         result = self._select(self._queries['article_title'])
 
-        return result[0].text if len(result) else ''
+        return result[0].text.strip() if len(result) else ''
 
     @property
     def summary(self):
         result = self._select(self._queries['article_summary'])
 
-        return result[0].text if len(result) else ''
+        return result[0].text.strip() if len(result) else ''
 
