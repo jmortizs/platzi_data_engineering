@@ -57,3 +57,7 @@ class ArticlePage(NewsPage):
 
         return result[0].text.strip() if len(result) else ''
 
+    @property
+    def url(self):
+        return self._url
+
