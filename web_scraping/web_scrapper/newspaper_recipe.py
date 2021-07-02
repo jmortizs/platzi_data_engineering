@@ -20,6 +20,19 @@ def _get_host(df):
     return df
 
 
+def _fill_missing_titles(df):
+    logger.info('Filling missing titles')
+    missing_titles_mask = df['title'].isna()
+
+    missing_titles = (df[missing_titles_mask]['url']
+                        .str.extract(r'(?P<missing_titles>[^/]+)/?$')
+                        .applymap(lambda title: title.replace('-', ' ').capitalize())
+                        )
+    df.loc[missing_titles_mask, 'title'] = missing_titles.loc[:, 'missing_titles']
+
+    return df
+
+
 def main(filename):
     logger.info('Starting cleaning process')
 
@@ -29,6 +42,7 @@ def main(filename):
 
     df['newspaper'] = newspaper_uid
     df = _get_host(df)
+    df = _fill_missing_titles(df)
 
     return df
 
