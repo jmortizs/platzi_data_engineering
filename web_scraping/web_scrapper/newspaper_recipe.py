@@ -69,6 +69,12 @@ def _tokenize_column(df, column_name):
           )
 
 
+def _save_data(df: pd.DataFrame, filename):
+    save_filename = f'clean_{filename}'
+
+    df.to_csv(save_filename, encoding='utf-8')
+
+
 def main(filename):
     logger.info('Starting cleaning process')
 
@@ -83,8 +89,9 @@ def main(filename):
     df = _remove_new_lines(df)
     df['n_tokens_title'] = _tokenize_column(df, 'title')
     df['n_tokens_summary'] = _tokenize_column(df, 'summary')
-
+    _save_data(df, filename)
     return df
+
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
@@ -92,4 +99,5 @@ if __name__ == "__main__":
     ARGS = parser.parse_args()
 
     df = main(ARGS.filename)
+
     print(df)
